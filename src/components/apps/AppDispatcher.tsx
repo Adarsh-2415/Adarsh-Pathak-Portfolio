@@ -8,6 +8,7 @@ import { ThisPcApp } from './ThisPcApp'
 import { RecycleBinApp } from './RecycleBinApp'
 import { BrowserApp } from './BrowserApp'
 import { ImageViewerApp } from './ImageViewerApp'
+import { MediaPlayerApp } from './MediaPlayerApp'
 
 interface AppDispatcherProps {
   windowState: WindowState
@@ -32,6 +33,9 @@ export const AppDispatcher: React.FC<AppDispatcherProps> = ({ windowState }) => 
     case 'image-viewer':
       return <ImageViewerApp windowState={windowState} />
 
+    case 'media-player':
+      return <MediaPlayerApp windowState={windowState} />
+
     case 'explorer':
       if (id === 'win-node-this-pc' || id.includes('this-pc')) {
         return <ThisPcApp windowState={windowState} />
@@ -41,7 +45,6 @@ export const AppDispatcher: React.FC<AppDispatcherProps> = ({ windowState }) => 
       }
       return <FileExplorerApp windowState={windowState} />
 
-    case 'media-player':
     default:
       return <FileExplorerApp windowState={windowState} />
   }

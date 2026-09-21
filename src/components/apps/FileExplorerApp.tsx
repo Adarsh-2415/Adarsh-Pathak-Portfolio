@@ -9,6 +9,7 @@ import {
   HardDrive,
   Grid,
   List as ListIcon,
+  Play,
 } from 'lucide-react'
 import type { WindowState, VFSNode } from '@/types'
 import { getChildNodes, getNodeById, getBreadcrumbs, vfsAllNodes } from '@/data/vfs'
@@ -225,7 +226,25 @@ export const FileExplorerApp: React.FC<FileExplorerAppProps> = ({ windowState })
                         : 'border-transparent hover:bg-white/8 hover:border-white/10'
                     }`}
                   >
-                    {node.metadata?.mediaUrl ? (
+                    {node.type === 'video' || node.iconType === 'video' ? (
+                      <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-md overflow-hidden bg-gradient-to-br from-slate-900 via-slate-950 to-black border border-cyan-500/25 shadow-sm group-hover:scale-[1.02] group-hover:border-cyan-400/50 transition-transform duration-150 flex flex-col items-center justify-center">
+                        {node.metadata?.previewImage ? (
+                          <img
+                            src={node.metadata.previewImage}
+                            alt={node.name}
+                            className="w-full h-full object-cover opacity-80"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 flex items-center justify-center pl-0.5 shadow-md group-hover:scale-110 group-hover:bg-cyan-500/30 transition-all">
+                            <Play size={18} className="fill-cyan-300/40" />
+                          </div>
+                        )}
+                        <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/75 border border-white/10 text-[9px] font-mono text-cyan-300 uppercase tracking-wide">
+                          Video
+                        </span>
+                      </div>
+                    ) : node.metadata?.mediaUrl ? (
                       <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-md overflow-hidden bg-black/40 border border-white/15 shadow-sm group-hover:scale-[1.02] group-hover:border-white/30 transition-transform duration-150 flex items-center justify-center">
                         <img
                           src={node.metadata.mediaUrl}
@@ -264,7 +283,9 @@ export const FileExplorerApp: React.FC<FileExplorerAppProps> = ({ windowState })
                   >
                     <div className="flex items-center space-x-3 overflow-hidden">
                       <div className="w-7 h-7 rounded overflow-hidden flex items-center justify-center shrink-0 bg-black/40 border border-white/10">
-                        {node.metadata?.mediaUrl ? (
+                        {node.type === 'video' || node.iconType === 'video' ? (
+                          <Play size={14} className="text-cyan-400 pl-0.5" />
+                        ) : node.metadata?.mediaUrl ? (
                           <img
                             src={node.metadata.mediaUrl}
                             alt={node.name}
@@ -277,7 +298,7 @@ export const FileExplorerApp: React.FC<FileExplorerAppProps> = ({ windowState })
                       <span className="font-medium truncate">{node.name}</span>
                     </div>
                     <span className="text-slate-400 font-mono text-[11px] shrink-0">
-                      {node.type === 'image' ? 'Image File' : node.dateModified || 'Folder'}
+                      {node.type === 'video' ? 'Video File' : node.type === 'image' ? 'Image File' : node.dateModified || 'Folder'}
                     </span>
                   </div>
                 ))}

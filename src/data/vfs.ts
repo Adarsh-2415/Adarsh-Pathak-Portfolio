@@ -151,6 +151,20 @@ export const vfsAllNodes: VFSNode[] = [
     },
   },
   {
+    id: 'video-test-video',
+    name: 'Test Video.mp4',
+    type: 'video',
+    parentId: 'folder-ai-video',
+    iconType: 'video',
+    dateModified: '',
+    appHandler: 'media-player',
+    metadata: {
+      title: 'Test Video.mp4',
+      mediaUrl: '/Test Video.mp4',
+      mediaType: 'video',
+    },
+  },
+  {
     id: 'file-resume',
     name: 'Resume.pdf',
     type: 'document',
