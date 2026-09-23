@@ -6,6 +6,7 @@ import { WorkspacePreparation } from './WorkspacePreparation'
 import { SleepScreen } from './SleepScreen'
 import { ShutdownScreen } from './ShutdownScreen'
 import { AmbientFallbackBackground } from '@/components/background/AmbientFallbackBackground'
+import { DesktopWallpaperBackground } from '@/components/background/DesktopWallpaperBackground'
 import { useSessionStore } from '@/store/useSessionStore'
 
 const Ambient3DBackground = lazy(() =>
@@ -77,10 +78,17 @@ export const StartingExperience: React.FC<StartingExperienceProps> = ({ onHandof
 
   return (
     <div className="relative w-screen h-screen overflow-hidden select-none bg-[#05070e]">
-      {/* Premium 3D Atmospheric Ambient Background with Instant CSS Fallback */}
-      <Suspense fallback={<AmbientFallbackBackground />}>
-        <Ambient3DBackground isDimmed={isDimmedBackground} />
-      </Suspense>
+      {/* Startup Screen keeps existing 3D background treatment; Sign-In & Welcome screens use wallpaper */}
+      {stage === 'startup' ? (
+        <Suspense fallback={<AmbientFallbackBackground />}>
+          <Ambient3DBackground isDimmed={isDimmedBackground} />
+        </Suspense>
+      ) : (
+        <DesktopWallpaperBackground
+          isDimmed={isDimmedBackground}
+          isBlurred={stage === 'signin'}
+        />
+      )}
 
       <AnimatePresence mode="wait">
         {/* Stage 1: System Boot Experience */}

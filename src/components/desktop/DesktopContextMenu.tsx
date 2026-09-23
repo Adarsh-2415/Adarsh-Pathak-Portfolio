@@ -74,6 +74,8 @@ export const DesktopContextMenu: React.FC<DesktopContextMenuProps> = ({
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.12, ease: 'easeOut' }}
+      onMouseDown={(e) => e.stopPropagation()}
+      onClick={(e) => e.stopPropagation()}
       style={{ left: `${safeX}px`, top: `${safeY}px` }}
       className="fixed z-[980] w-[210px] surface-menu rounded-[var(--radius-popup)] p-1.5 text-xs text-slate-200 select-none shadow-2xl border border-white/10"
       role="menu"

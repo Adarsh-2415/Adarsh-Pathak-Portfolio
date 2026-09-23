@@ -1,20 +1,14 @@
-import React, { useState, Suspense, lazy } from 'react'
+import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { DesktopCanvas } from './DesktopCanvas'
 import { WindowManager } from '@/components/window/WindowManager'
 import { Taskbar } from '@/components/taskbar/Taskbar'
 import { StartMenu } from '@/components/taskbar/StartMenu'
 import { TaskbarSearch } from '@/components/taskbar/TaskbarSearch'
-import { AmbientFallbackBackground } from '@/components/background/AmbientFallbackBackground'
+import { DesktopWallpaperBackground } from '@/components/background/DesktopWallpaperBackground'
 import { SleepScreen } from '@/components/lockscreen/SleepScreen'
 import { ShutdownScreen } from '@/components/lockscreen/ShutdownScreen'
 import { useSessionStore } from '@/store/useSessionStore'
-
-const Ambient3DBackground = lazy(() =>
-  import('@/components/background/Ambient3DBackground').then((m) => ({
-    default: m.Ambient3DBackground,
-  }))
-)
 
 type DesktopPowerState = 'active' | 'sleeping' | 'restarting' | 'shuttingdown' | 'poweredoff'
 
@@ -25,7 +19,7 @@ interface DesktopEnvironmentProps {
 /**
  * DesktopEnvironment
  * Master interactive Windows 11-inspired desktop environment for Adarsh Pathak.
- * Connects 3D ambient background, Desktop Canvas (VFS icons, marquee selection, context menu),
+ * Connects Desktop Wallpaper Background, Desktop Canvas (VFS icons, marquee selection, context menu),
  * Window Manager, centered Taskbar, Start Menu, Search, and unified Power Architecture.
  */
 export const DesktopEnvironment: React.FC<DesktopEnvironmentProps> = ({ onResetSession }) => {
@@ -82,10 +76,8 @@ export const DesktopEnvironment: React.FC<DesktopEnvironmentProps> = ({ onResetS
 
   return (
     <div className="relative w-screen h-screen overflow-hidden select-none bg-[#05070e] text-slate-100 font-sans">
-      {/* Premium 3D Atmospheric Ambient Background */}
-      <Suspense fallback={<AmbientFallbackBackground />}>
-        <Ambient3DBackground isDimmed={isDimmed} />
-      </Suspense>
+      {/* Desktop Background Layer */}
+      <DesktopWallpaperBackground isDimmed={isDimmed} />
 
       {/* Desktop Canvas (VFS Icons, Selection Marquee, Context Menu) */}
       <DesktopCanvas />

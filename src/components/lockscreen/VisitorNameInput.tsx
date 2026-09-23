@@ -37,7 +37,7 @@ export const VisitorNameInput: React.FC<VisitorNameInputProps> = ({ onSubmit, di
       <div className="w-full flex flex-col items-center space-y-1.5">
         <label
           htmlFor="visitor-name-input"
-          className="text-xs font-medium text-[var(--text-secondary)] tracking-wide text-center"
+          className="text-xs sm:text-sm font-semibold text-slate-100 tracking-wide text-center drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]"
         >
           Who's entering?
         </label>
@@ -46,8 +46,8 @@ export const VisitorNameInput: React.FC<VisitorNameInputProps> = ({ onSubmit, di
         <div
           className={`relative w-full flex items-center rounded-lg transition-all duration-200 ${
             hasError
-              ? 'border border-rose-500/80 ring-2 ring-rose-500/20 bg-black/40'
-              : 'border border-white/15 bg-black/40 focus-within:border-[var(--accent)] focus-within:ring-2 focus-within:ring-[var(--accent-subtle)]'
+              ? 'border border-rose-500/80 ring-2 ring-rose-500/20 bg-black/60 shadow-lg'
+              : 'border border-white/30 bg-black/60 backdrop-blur-md focus-within:border-cyan-400 focus-within:ring-2 focus-within:ring-cyan-500/30 shadow-lg'
           }`}
         >
           <input
@@ -61,7 +61,7 @@ export const VisitorNameInput: React.FC<VisitorNameInputProps> = ({ onSubmit, di
             maxLength={32}
             autoComplete="off"
             spellCheck={false}
-            className="w-full h-10 pl-3.5 pr-10 bg-transparent text-sm text-[var(--text-primary)] placeholder:text-slate-500 placeholder:text-xs outline-none disabled:opacity-50"
+            className="w-full h-10 pl-3.5 pr-10 bg-transparent text-sm text-slate-100 font-medium placeholder:text-slate-300 placeholder:text-xs placeholder:font-medium outline-none disabled:opacity-50"
           />
 
           {/* Windows-style submit button inside field */}

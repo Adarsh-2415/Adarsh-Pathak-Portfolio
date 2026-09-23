@@ -45,7 +45,7 @@ export const WorkspacePreparation: React.FC<WorkspacePreparationProps> = ({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.02 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#070a14]/90 backdrop-blur-md text-slate-100 select-none p-6"
+      className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black/25 backdrop-blur-[2px] text-slate-100 select-none p-6"
       role="status"
       aria-live="polite"
     >

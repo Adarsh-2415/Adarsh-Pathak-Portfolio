@@ -70,7 +70,7 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({
           <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-100 font-sans drop-shadow-md">
             ADARSH PATHAK
           </h2>
-          <p className="text-xs font-medium text-slate-400 tracking-wider uppercase mt-1 font-mono">
+          <p className="text-xs font-semibold text-cyan-300 tracking-widest uppercase mt-1 font-mono drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
             Personal Workspace
           </p>
         </motion.div>
