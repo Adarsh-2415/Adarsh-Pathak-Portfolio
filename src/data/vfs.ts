@@ -281,7 +281,7 @@ export const vfsAllNodes: VFSNode[] = [
     name: 'About Me',
     type: 'system',
     parentId: null,
-    iconType: 'sysinfo',
+    iconType: 'aboutme',
     dateModified: '2025-02-15',
     appHandler: 'sysinfo',
     metadata: {
@@ -307,7 +307,7 @@ export const vfsAllNodes: VFSNode[] = [
     name: 'This PC',
     type: 'system',
     parentId: null,
-    iconType: 'sysinfo',
+    iconType: 'thispc',
     dateModified: '2025-02-15',
     appHandler: 'explorer',
     metadata: {

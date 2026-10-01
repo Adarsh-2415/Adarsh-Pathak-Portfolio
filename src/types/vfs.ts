@@ -42,7 +42,7 @@ export interface VFSNode {
   name: string
   type: FileType
   parentId: string | null
-  iconType: 'folder' | 'website' | 'app' | 'image' | 'video' | 'pdf' | 'sysinfo' | 'contact' | 'trash'
+  iconType: 'folder' | 'website' | 'app' | 'image' | 'video' | 'pdf' | 'sysinfo' | 'contact' | 'trash' | 'thispc' | 'aboutme'
   dateModified: string
   appHandler: AppId
   metadata?: VFSMetadata

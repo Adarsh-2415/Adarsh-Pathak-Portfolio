@@ -203,6 +203,100 @@ export const WindowsRecycleBinIcon: React.FC<IconProps> = ({ size = 48, classNam
 )
 
 /**
+ * Windows 11-inspired This PC / Computer System Icon
+ * Widescreen display monitor with glowing blue screen gradient, stand base, and chassis.
+ */
+export const WindowsThisPcIcon: React.FC<IconProps> = ({ size = 48, className = '', ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" className={className} {...props}>
+    <defs>
+      <linearGradient id="win-thispc-screen" x1="10" y1="10" x2="54" y2="40" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#0284c7" />
+        <stop offset="0.5" stopColor="#0369a1" />
+        <stop offset="1" stopColor="#0f172a" />
+      </linearGradient>
+      <linearGradient id="win-thispc-bezel" x1="6" y1="6" x2="58" y2="44" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#334155" />
+        <stop offset="1" stopColor="#0f172a" />
+      </linearGradient>
+      <linearGradient id="win-thispc-stand" x1="26" y1="42" x2="38" y2="54" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#94a3b8" />
+        <stop offset="1" stopColor="#475569" />
+      </linearGradient>
+      <filter id="win-thispc-shadow" x="2" y="4" width="60" height="56" filterUnits="userSpaceOnUse">
+        <feDropShadow dx="0" dy="3" stdDeviation="2.5" floodColor="#000" floodOpacity="0.4" />
+      </filter>
+    </defs>
+
+    <g filter="url(#win-thispc-shadow)">
+      {/* Outer Monitor Frame / Bezel */}
+      <rect x="6" y="8" width="52" height="34" rx="4" fill="url(#win-thispc-bezel)" stroke="rgba(56,189,248,0.3)" strokeWidth="1" />
+
+      {/* Screen Display Area */}
+      <rect x="9" y="11" width="46" height="28" rx="2" fill="url(#win-thispc-screen)" />
+
+      {/* Screen Windows 11 Desktop Graphic Detail */}
+      <path d="M9 31C18 28 28 35 38 31C44 28.5 50 32 55 35V37C55 38.1 54.1 39 53 39H11C9.9 39 9 38.1 9 37V31Z" fill="#38bdf8" fillOpacity="0.35" />
+      {/* Drive / Storage Progress Lines inside screen */}
+      <rect x="13" y="15" width="16" height="3" rx="1.5" fill="#e0f2fe" opacity="0.9" />
+      <rect x="13" y="20" width="10" height="2.5" rx="1.25" fill="#38bdf8" opacity="0.8" />
+      <rect x="33" y="15" width="18" height="3" rx="1.5" fill="#e0f2fe" opacity="0.9" />
+      <rect x="33" y="20" width="14" height="2.5" rx="1.25" fill="#818cf8" opacity="0.8" />
+
+      {/* Monitor Stand Stem */}
+      <path d="M28 42L26 50H38L36 42H28Z" fill="url(#win-thispc-stand)" />
+
+      {/* Stand Base */}
+      <rect x="20" y="50" width="24" height="4" rx="2" fill="#cbd5e1" />
+      <rect x="20" y="52" width="24" height="2" rx="1" fill="#64748b" opacity="0.5" />
+    </g>
+  </svg>
+)
+
+/**
+ * Windows 11-inspired About Me / Personal Developer Profile Icon
+ * Indigo/Cyan ID card badge with profile avatar silhouette and bio lines.
+ */
+export const WindowsAboutMeIcon: React.FC<IconProps> = ({ size = 48, className = '', ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" className={className} {...props}>
+    <defs>
+      <linearGradient id="win-about-card" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#4f46e5" />
+        <stop offset="0.6" stopColor="#3730a3" />
+        <stop offset="1" stopColor="#1e1b4b" />
+      </linearGradient>
+      <linearGradient id="win-about-avatar" x1="22" y1="16" x2="42" y2="36" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#38bdf8" />
+        <stop offset="1" stopColor="#818cf8" />
+      </linearGradient>
+      <filter id="win-about-shadow" x="4" y="4" width="56" height="56" filterUnits="userSpaceOnUse">
+        <feDropShadow dx="0" dy="3" stdDeviation="2.5" floodColor="#000" floodOpacity="0.4" />
+      </filter>
+    </defs>
+
+    <g filter="url(#win-about-shadow)">
+      {/* Profile Card Body */}
+      <rect x="10" y="8" width="44" height="48" rx="6" fill="url(#win-about-card)" stroke="rgba(129, 140, 248, 0.4)" strokeWidth="1.2" />
+
+      {/* Top Card Accent Header Ribbon */}
+      <path d="M10 14C10 10.6863 12.6863 8 16 8H48C51.3137 8 54 10.6863 54 14V17H10V14Z" fill="#6366f1" fillOpacity="0.6" />
+
+      {/* Profile Avatar Circle Background */}
+      <circle cx="32" cy="24" r="9" fill="url(#win-about-avatar)" />
+
+      {/* Profile Person Head & Shoulder Silhouette */}
+      <circle cx="32" cy="22" r="3.5" fill="#ffffff" />
+      <path d="M26.5 30C26.5 27.5 29 26.5 32 26.5C35 26.5 37.5 27.5 37.5 30" fill="#ffffff" />
+
+      {/* ID Badge Details & Bio Text Lines */}
+      <rect x="18" y="37" width="28" height="3" rx="1.5" fill="#e0e7ff" />
+      <rect x="22" y="43" width="20" height="2.5" rx="1.25" fill="#a5b4fc" opacity="0.9" />
+      <rect x="24" y="48" width="16" height="2" rx="1" fill="#818cf8" opacity="0.7" />
+    </g>
+  </svg>
+)
+
+
+/**
  * Workspace Launcher Emblem
  * Original geometric emblem evoking the familiar bottom-dock launcher
  * without copying Microsoft's trademarked 4-square Windows logo.

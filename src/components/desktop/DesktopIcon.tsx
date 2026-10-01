@@ -9,6 +9,8 @@ import {
   WindowsRecycleBinIcon,
   WindowsSysInfoIcon,
   WindowsContactIcon,
+  WindowsThisPcIcon,
+  WindowsAboutMeIcon,
 } from '@/components/common/WindowsIcons'
 
 
@@ -25,8 +27,22 @@ interface DesktopIconProps {
   isJustDragged?: () => boolean
 }
 
-export const resolveVfsIcon = (iconType: VFSNode['iconType'], size = 44) => {
+export const resolveVfsIcon = (
+  iconType: VFSNode['iconType'] | 'thispc' | 'aboutme' | string,
+  size = 44,
+  nodeId?: string
+) => {
+  if (nodeId === 'node-this-pc' || iconType === 'thispc') {
+    return <WindowsThisPcIcon size={size} />
+  }
+  if (nodeId === 'file-about' || iconType === 'aboutme') {
+    return <WindowsAboutMeIcon size={size} />
+  }
   switch (iconType) {
+    case 'thispc':
+      return <WindowsThisPcIcon size={size} />
+    case 'aboutme':
+      return <WindowsAboutMeIcon size={size} />
     case 'folder':
       return <WindowsFolderIcon size={size} />
     case 'image':
@@ -144,7 +160,7 @@ export const DesktopIcon: React.FC<DesktopIconProps> = ({
           isDragging ? '' : 'group-hover:scale-105 group-active:scale-95'
         }`}
       >
-        {resolveVfsIcon(node.iconType, iconSize)}
+        {resolveVfsIcon(node.iconType, iconSize, node.id)}
       </div>
 
       {/* Label (up to 2 lines, centered, text drop-shadow for wallpaper contrast) */}
